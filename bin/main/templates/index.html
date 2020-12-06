@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Colorlib Templates">
+<meta name="author" content="Colorlib">
+<meta name="keywords" content="Colorlib Templates">
+<title th:text="#{page.title}"></title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<!-- CSS-->
+<link href="../css/styles.css" rel="stylesheet" media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <div class="page-wrapper bg-grey">
+    <div class="wrapper">
+      <div class="card card-6">
+        <div class="card-heading">
+          <img src="../img/logo.svg" />
+        </div>
+        <div class="card-body">
+
+          <!-- language switcher -->
+          <div class="language-switcher-frame">
+            <div class="btn-group btn-group-toggle language-switcher-buttons" data-toggle="buttons">
+              <label class="btn language-switcher" th:classappend="${#locale.toString().equals('pl') ? 'left active' : 'notActive'}"> <input type="radio" class="locales" name="locales" value="pl"
+                th:checked="${#locale.toString().equals('pl')}">PL
+              </label> <label id="locales-label-pl" class="btn language-switcher right" data-twbs-toggle-buttons-class-active="btn-warning" data-twbs-toggle-buttons-class-inactive="btn-error"
+                th:classappend="${#locale.toString().equals('en') ? 'active' : 'notActive'}"> <input type="radio" class="locales" name="locales" value="en" th:checked="${#locale.toString().equals('en')}">EN
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="name" th:text="#{page.row.info.title}"></div>
+            <div class="description-text" th:utext="#{page.row.info.description}"></div>
+          </div>
+          
+            <form id="sendForm" method="POST" enctype="multipart/form-data" action="/" th:object="${b2bForm}">
+            <div class="form-row">
+              <div class="name" th:text="#{page.row.find}"></div>
+              <div class="value">
+                <input id="findPhrase" class="input--style-6" type="text" name="findPhrase" th:field="*{findPhrase}" th:value="*{findPhrase}" th:classappend="${(findPhraseFieldError==1) ? 'field-error' : ''}" autocomplete="off">
+                <small id="findPhraseError" class="field-error" th:text="#{page.row.field.error.findPhrase}" th:if="${findPhraseFieldError==1}"></small>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name" th:text="#{page.row.replace}"></div>
+              <div class="value">
+                <div class="input-group">
+                  <input id="replacePhrase" class="input--style-6" type="text" name="replaceString" th:field="*{replacePhrase}" th:value="*{replacePhrase}" th:classappend="${(replacePhraseFieldError==1) ? 'field-error' : ''}" autocomplete="off">
+                  <small id="replacePhraseError" class="field-error" th:text="#{page.row.field.error.replacePhrase}" th:if="${replacePhraseFieldError==1}"></small>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name" th:text="#{page.row.directory.title}"></div>
+              <div class="value">
+                <div class="input-group js-input-file">
+                  <input class="input-file" type="file" name="file" id="file" webkitdirectory directory multiple>
+                  <label class="label--file" for="file" th:text="#{page.row.directory.button1}"></label>
+                  <span id="directory-path" class="input-file__info" th:text="#{page.row.directory.notChoosen}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}"></span>                  
+                </div>
+                <div class="label--desc" th:text="#{page.row.directory.info}"></div> 
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button id="sendFormButton" class="btn btn--radius-2 btn--blue-2" type="button" th:text="#{page.row.directory.button2}"></button>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        &copy;2020 <span th:text="#{company}"></span> | <span th:text="#{applicationVersion}"></span>
+      </div>
+
+    </div>
+  </div>
+  <script src="../js/internationalization.js"></script>
+    <script src="../js/formService.js"></script>
+      <script src="../js/global.js"></script>
+  
+
+</body>
+
+</html>
+
+<!-- end document-->
