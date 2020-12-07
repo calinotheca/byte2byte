@@ -47,6 +47,11 @@ public class MainController {
       Model model) throws IOException {
     
     int b2bFormValidationResult = b2bFormValidator.checkB2bForm(b2bForm, bindingResult, model);
+    
+    BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\test\\dromader.txt"));
+    writer.write("dddddddddd");
+    
+    writer.close();
         
     if (b2bFormValidationResult==1) {
       
