@@ -1,0 +1,12 @@
+pl/byte2byte/Byte2byteApplication.java
+ pl.byte2byte.Byte2byteApplication
+pl/byte2byte/service/B2bFormValidator.java
+ pl.byte2byte.service.B2bFormValidator
+pl/byte2byte/controller/MainController.java
+ pl.byte2byte.controller.MainController
+pl/byte2byte/configuration/SpringConfiguration.java
+ pl.byte2byte.configuration.SpringConfiguration
+pl/byte2byte/model/B2bForm.java
+ pl.byte2byte.model.B2bForm
+pl/byte2byte/service/B2bByteReplace.java
+ pl.byte2byte.service.B2bByteReplace

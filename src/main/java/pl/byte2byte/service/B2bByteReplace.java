@@ -15,7 +15,7 @@ public class B2bByteReplace {
 
   public int replaceByte(String findPhrase, String replacePhrase, String localDirectoryPath) throws IOException  {
     
-    File root = new File(localDirectoryPath);
+    File root = new File("c:\\test");
     Collection files = FileUtils.listFiles(root, null, true);
 
       for (Iterator iterator = files.iterator(); iterator.hasNext();) {
