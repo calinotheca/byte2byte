@@ -28,12 +28,12 @@ public class B2bFormValidator {
       errorCount++;
     }
     
-    File file = new File(b2bForm.getLocalDirectoryPath());
-    if (!file.exists() && !file.isDirectory()) {
-      model.addAttribute("directoryPathFieldError", 1);
-      errorCount++;
-    }
-    
+//    File file = new File(b2bForm.getLocalDirectoryPath());
+//    if (!file.exists() && !file.isDirectory()) {
+//      model.addAttribute("directoryPathFieldError", 1);
+//      errorCount++;
+//    }
+//    
     if (errorCount > 0)
       return 0;
     else
