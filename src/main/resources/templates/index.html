@@ -45,7 +45,7 @@
           </div>
           
             <form id="sendForm" method="POST" enctype="multipart/form-data" action="/" th:object="${b2bForm}">
-            <div class="form-row">
+            <div class="form-row subrow">
               <div class="name" th:text="#{page.row.find}"></div>
               <div class="value">
                 <input id="findPhrase" class="input--style-6" type="text" name="findPhrase" th:field="*{findPhrase}" th:value="*{findPhrase}" th:classappend="${(findPhraseFieldError==1) ? 'field-error' : ''}" autocomplete="off">
@@ -64,10 +64,16 @@
             <div class="form-row">
               <div class="name" th:text="#{page.row.directory.title}"></div>
               <div class="value">
+<!--                 <div class="input-group js-input-file"> -->
+<!--                   <input class="input-file" type="file" name="file" id="file" webkitdirectory directory multiple> -->
+<!--                   <label class="label--file" for="file" th:text="#{page.row.directory.button1}"></label> -->
+<!--                   <span id="directory-path" class="input-file__info" th:text="#{page.row.directory.notChoosen}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}"></span>                   -->
+<!--                 </div> -->
+
+
                 <div class="input-group js-input-file">
-                  <input class="input-file" type="file" name="file" id="file" webkitdirectory directory multiple>
-                  <label class="label--file" for="file" th:text="#{page.row.directory.button1}"></label>
-                  <span id="directory-path" class="input-file__info" th:text="#{page.row.directory.notChoosen}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}"></span>                  
+                  <input id="localDirectoryPath" class="input--style-6" type="text" name="localDirectoryPath" th:field="*{localDirectoryPath}" th:value="*{localDirectoryPath}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}" autocomplete="off">
+                  <small id="localDirectoryPathError" class="field-error" th:text="#{page.row.directory.notChoosen}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}" th:if="${directoryPathFieldError==1}"></small>                  
                 </div>
                 <div class="label--desc" th:text="#{page.row.directory.info}"></div> 
               </div>
