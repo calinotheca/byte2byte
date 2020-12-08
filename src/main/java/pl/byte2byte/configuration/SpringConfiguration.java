@@ -13,8 +13,8 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 /**
- * The class contains some Spring Boot configuration
- * @author calinotheca.pl
+ * The class contains some Spring Boot configuration.
+ * @author Jakub Kalinowski
  *
  */
 
@@ -25,12 +25,12 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 public class SpringConfiguration implements WebMvcConfigurer {
 
   // 1. Methods.
-  
+
   /**
-   * The method set a default locale value. 
+   * The method set a bean with default locales.
    * @return
    */
-  
+
   @Bean
   public LocaleResolver localeResolver() {
     Locale locale = new Locale("pl");
@@ -40,10 +40,11 @@ public class SpringConfiguration implements WebMvcConfigurer {
   }
 
   /**
-   * The method get a 'lang' parameter value from the URL address and add it into the locale interceptor object.
+   * The method gets a 'lang' parameter value from the URL address and adds it
+   * into the locale interceptor object.
    * @return
    */
-  
+
   @Bean
   public LocaleChangeInterceptor localeChangeInterceptor() {
     LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
@@ -52,15 +53,12 @@ public class SpringConfiguration implements WebMvcConfigurer {
   }
 
   /**
-   * The method add a new interceptor with a locale value to the registry.
+   * The method adds a new interceptor with the selected locale value to the
+   * registry.
    */
-  
+
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(localeChangeInterceptor());
   }
-  
-  
-  
-  
 }

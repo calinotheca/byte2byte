@@ -1,5 +1,5 @@
 /**
- * 
+ * Switch language 
  */
 
 $(document).ready(function() {
@@ -12,8 +12,6 @@ $(document).ready(function() {
 			}).done(function() {
 				location.reload();
 			});
-
-
 		}
 	});
 });

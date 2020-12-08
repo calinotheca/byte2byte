@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-/*
-waitMe - 1.19 [31.10.17]
-Author: vadimsva
-Github: https://github.com/vadimsva/waitMe
-*/
 .waitMe_container:not(body) {transform:translateZ(0);backface-visibility:hidden}
 body.waitMe_container .waitMe {position:fixed;height:100vh;transform:translateZ(0);backface-visibility:hidden}
 body.waitMe_container .waitMe .waitMe_content {top:50%!important;transform:none!important}

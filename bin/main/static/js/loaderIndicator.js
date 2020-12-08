@@ -1,15 +1,8 @@
-/*
-waitMe - 1.19 [31.10.17]
-Author: vadimsva
-Github: https://github.com/vadimsva/waitMe
+/**
+* Indicator service
 */
 
-
-/*
-
-SERVICE
-
-*/
+/** Service section */
 (function($) {
   $.fn.waitMe = function(method) {
     return this.each(function() {
@@ -297,22 +290,18 @@ SERVICE
 
 
 
-/*
+/** Run on site section */
 
-RUN ON SITE
-
-*/
 $(function(){
 
   var current_effect = 'bounce';
-  
+
+  // Submit form  
   $('form').on('submit', function()	{
   	run_waitMe($('body'), 1, current_effect);
   });
   
-  
-  
-  
+  // Loader actions
   $('.waitMe_ex_close').click(function(){
     $('.containerBlock > form').waitMe('hide');
     $('#waitMe_ex2').waitMe('hide');
@@ -402,6 +391,4 @@ $(function(){
       },200);
     },4000);
   }
-  
 });
-
