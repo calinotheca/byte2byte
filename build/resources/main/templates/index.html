@@ -13,15 +13,18 @@
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="../img/favicon.png">
+
 <!-- CSS-->
 <link href="../css/styles.css" rel="stylesheet" media="all">
 <link href="../css/loaderIndicator/waitMe.css" rel="stylesheet" media="all">
+
+<!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
 <body>
-<div class="table-loader-icon"></div>
+  <div class="table-loader-icon"></div>
   <div class="page-wrapper bg-grey">
     <div class="wrapper">
       <div class="card card-6">
@@ -40,67 +43,58 @@
               </label>
             </div>
           </div>
-
           <div class="form-row">
             <div class="name" th:text="#{page.row.info.title}"></div>
             <div class="description-text" th:utext="#{page.row.info.description}"></div>
           </div>
           
-            <form id="sendForm" method="POST" enctype="multipart/form-data" action="/" th:object="${b2bForm}">
+          <!-- Form -->
+          <form id="sendForm" method="POST" enctype="multipart/form-data" action="/" th:object="${b2bForm}">
             <div class="form-row subrow">
               <div class="name" th:text="#{page.row.find}"></div>
               <div class="value">
-                <input id="findPhrase" class="input--style-6" type="text" name="findPhrase" th:field="*{findPhrase}" th:value="*{findPhrase}" th:classappend="${(findPhraseFieldError==1 || findPhraseFieldErrorWrongSign==1) ? 'field-error' : ''}" autocomplete="off">
-                <small id="findPhraseError" class="field-error" th:text="#{page.row.field.error.findPhrase}" th:if="${findPhraseFieldError==1}"></small>
-                <small id="findPhraseErrorWrongSign" class="field-error" th:text="#{page.row.field.error.findPhraseFieldErrorWrongSign}" th:if="${findPhraseFieldErrorWrongSign==1}"></small>  
+                <input id="findPhrase" class="input--style-6" type="text" name="findPhrase" th:field="*{findPhrase}" th:value="*{findPhrase}" th:classappend="${(findPhraseFieldError==1 || findPhraseFieldErrorWrongSign==1) ? 'field-error' : ''}"
+                  autocomplete="off"> <small id="findPhraseError" class="field-error" th:text="#{page.row.field.error.findPhrase}" th:if="${findPhraseFieldError==1}"></small> <small id="findPhraseErrorWrongSign" class="field-error"
+                  th:text="#{page.row.field.error.findPhraseFieldErrorWrongSign}" th:if="${findPhraseFieldErrorWrongSign==1}"></small>
               </div>
             </div>
             <div class="form-row">
               <div class="name" th:text="#{page.row.replace}"></div>
               <div class="value">
                 <div class="input-group">
-                  <input id="replacePhrase" class="input--style-6" type="text" name="replaceString" th:field="*{replacePhrase}" th:value="*{replacePhrase}" th:classappend="${(replacePhraseFieldError==1 || replacePhraseFieldErrorWrongSign==1) ? 'field-error' : ''}" autocomplete="off">
-                  <small id="replacePhraseError" class="field-error" th:text="#{page.row.field.error.replacePhrase}" th:if="${replacePhraseFieldError==1}"></small>
-                  <small id="replacePhraseErrorWrongSign" class="field-error" th:text="#{page.row.field.error.replacePhraseFieldErrorWrongSign}" th:if="${replacePhraseFieldErrorWrongSign==1}"></small>
+                  <input id="replacePhrase" class="input--style-6" type="text" name="replaceString" th:field="*{replacePhrase}" th:value="*{replacePhrase}"
+                    th:classappend="${(replacePhraseFieldError==1 || replacePhraseFieldErrorWrongSign==1) ? 'field-error' : ''}" autocomplete="off"> <small id="replacePhraseError" class="field-error"
+                    th:text="#{page.row.field.error.replacePhrase}" th:if="${replacePhraseFieldError==1}"></small> <small id="replacePhraseErrorWrongSign" class="field-error" th:text="#{page.row.field.error.replacePhraseFieldErrorWrongSign}"
+                    th:if="${replacePhraseFieldErrorWrongSign==1}"></small>
                 </div>
               </div>
             </div>
             <div class="form-row">
               <div class="name" th:text="#{page.row.directory.title}"></div>
               <div class="value">
-<!--                 <div class="input-group js-input-file"> -->
-<!--                   <input class="input-file" type="file" name="file" id="file" webkitdirectory directory multiple> -->
-<!--                   <label class="label--file" for="file" th:text="#{page.row.directory.button1}"></label> -->
-<!--                   <span id="directory-path" class="input-file__info" th:text="#{page.row.directory.notChoosen}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}"></span>                   -->
-<!--                 </div> -->
-
-
                 <div class="input-group js-input-file">
-                  <input id="localDirectoryPath" class="input--style-6 wider-field" type="text" name="localDirectoryPath" th:field="*{localDirectoryPath}" th:value="*{localDirectoryPath}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}"  th:placeholder="#{page.row.directory.placeholder}" autocomplete="off">
-                  <input id="extension" class="input--style-6 narrower-field" type="text" name="extension" th:field="*{filesExtension}" th:value="*{filesExtension}" th:placeholder="#{page.row.extension.placeholder}" autocomplete="off">
-                  <label class="label--ext" for="extension" th:text="#{page.row.extension.label}"></label>
-                  
-                  <small id="localDirectoryPathError" class="field-error" th:text="#{page.row.directory.notChoosen}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}" th:if="${directoryPathFieldError==1}"></small>                  
+                  <input id="localDirectoryPath" class="input--style-6 wider-field" type="text" name="localDirectoryPath" th:field="*{localDirectoryPath}" th:value="*{localDirectoryPath}"
+                    th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}" th:placeholder="#{page.row.directory.placeholder}" autocomplete="off"> <input id="extension" class="input--style-6 narrower-field" type="text"
+                    name="extension" th:field="*{filesExtension}" th:value="*{filesExtension}" th:placeholder="#{page.row.extension.placeholder}" autocomplete="off"> <label class="label--ext" for="extension"
+                    th:text="#{page.row.extension.label}"></label> <small id="localDirectoryPathError" class="field-error" th:text="#{page.row.directory.notChoosen}" th:classappend="${(directoryPathFieldError==1) ? 'field-error' : ''}"
+                    th:if="${directoryPathFieldError==1}"></small>
                 </div>
-                <div class="label--desc" th:utext="#{page.row.directory.info}"></div> 
+                <div class="label--desc" th:utext="#{page.row.directory.info}"></div>
               </div>
             </div>
           </form>
         </div>
         <div class="card-footer">
           <button id="sendFormButton" class="btn btn--radius-2 btn--blue-2" type="button" data-toggle="modal" data-target="#myModal" th:text="#{page.row.directory.button2}"></button>
-          
-          
         </div>
       </div>
       <div class="footer-copyright">
         &copy;2020 <span th:text="#{company}"></span> | <span th:text="#{applicationVersion}"></span>
       </div>
-
     </div>
   </div>
-  
-  <!-- Modal - confirmation -->
+
+  <!-- Modal - Confirmation -->
   <div class="modal fade" id="confirmationModal" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -113,15 +107,12 @@
         <div class="modal-footer">
           <button id="btnNo" type="button" class="btn btn-modal btn-modal-no" data-dismiss="modal" th:text="#{modal.confirmationModal.info.no}"></button>
           <button id="btnYes" type="button" class="btn btn-modal btn-modal-yes" data-dismiss="modal" th:text="#{modal.confirmationModal.info.yes}"></button>
-          
-          
         </div>
       </div>
     </div>
   </div>
-  
-  
-    <!-- Modal - summary -->
+
+  <!-- Modal - Summary -->
   <div class="modal fade" id="summaryModal" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -130,33 +121,29 @@
           <h4 class="modal-title" th:text="#{modal.summaryModal.title}"></h4>
         </div>
         <div class="modal-body">
-          <p><span th:text="#{modal.summaryModal.info1}"></span><span th:text="${' ' + fileChangedAmount + ' '}"></span><span th:text="#{modal.summaryModal.info2}"></span></p>
+          <p>
+            <span th:text="#{modal.summaryModal.info1}"></span><span th:text="${' ' + fileChangedAmount + ' '}"></span><span th:text="#{modal.summaryModal.info2}"></span>
+          </p>
         </div>
         <div class="modal-footer">
-                    <button id="btnClose" type="button" class="btn btn-modal btn-modal-yes" data-dismiss="modal" th:text="#{modal.summaryModal.close}"></button>
-          
-          
+          <button id="btnClose" type="button" class="btn btn-modal btn-modal-yes" data-dismiss="modal" th:text="#{modal.summaryModal.close}"></button>
         </div>
       </div>
     </div>
   </div>
 
-  
-  
+  <!-- Scripts -->
+
+  <!-- Add some data from model into Java Script variable -->
   <script id="lala" th:inline="javascript">
     /*<![CDATA[*/
     var indicatorMessage = /*[[#{page.indicatorMessage}]]*/;
     var fileChangedAmount = /*[[${fileChangedAmount}]]*/;
-    
   </script>
   <script src="../js/internationalization.js"></script>
-    <script src="../js/formService.js"></script>
-      <script src="../js/global.js"></script>
-      <script src="../js/loaderIndicator.js"></script>
-  
-
+  <script src="../js/formService.js"></script>
+  <script src="../js/loaderIndicator.js"></script>
 </body>
-
 </html>
 
 <!-- end document-->
