@@ -1,27 +1,31 @@
 package pl.byte2byte.model;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class B2bForm {
   
-  @Size(min=1, max=16)
+  @Size(min=1, max=32, message="wrongLength")
+  @Pattern(regexp="^[0-9,]*$", message="wrongSign")
   private String findPhrase = "";
   
-  @Size(max=16)
+  @Size(max=32, message="wrongLength")
+  @Pattern(regexp="^[0-9,]*$", message="wrongSign")
   private String replacePhrase = "";
-  
   private String localDirectoryPath = "";
+  private String filesExtension = "";
   
   public B2bForm() {
     
   }
   
-  public B2bForm(String findPhrase, String replacePhrase, String localDirectoryPath) {
+  public B2bForm(String findPhrase, String replacePhrase, String localDirectoryPath, String filesExtension) {
     super();
     this.findPhrase = findPhrase;
     this.replacePhrase = replacePhrase;
     this.localDirectoryPath = localDirectoryPath;
+    this.filesExtension = filesExtension;
   }
 
   public String getFindPhrase() {
@@ -46,5 +50,13 @@ public class B2bForm {
 
   public void setLocalDirectoryPath(String localDirectoryPath) {
     this.localDirectoryPath = localDirectoryPath;
+  }
+
+  public String getFilesExtension() {
+    return filesExtension;
+  }
+
+  public void setFilesExtension(String filesExtension) {
+    this.filesExtension = filesExtension;
   }
 }

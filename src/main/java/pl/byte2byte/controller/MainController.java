@@ -47,27 +47,9 @@ public class MainController {
       Model model) throws IOException {
     
     int b2bFormValidationResult = b2bFormValidator.checkB2bForm(b2bForm, bindingResult, model);
-    
-    BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\test\\dromader.txt"));
-    writer.write("dddddddddd");
-    
-    writer.close();
         
-    if (b2bFormValidationResult==1) {
-      
-      
-      System.out.println(b2bForm.getFindPhrase());
-      System.out.println(b2bForm.getReplacePhrase());
-      System.out.println(b2bForm.getLocalDirectoryPath());
-
-      
-      b2bByteReplace.replaceByte(b2bForm.getFindPhrase(), b2bForm.getReplacePhrase(), b2bForm.getLocalDirectoryPath());
-      
-      
-      
-      
-      
-    } 
+    if (b2bFormValidationResult==1)
+      b2bByteReplace.replaceByte(b2bForm.getFindPhrase(), b2bForm.getReplacePhrase(), b2bForm.getLocalDirectoryPath(), b2bForm.getFilesExtension().toLowerCase());
     
     return "index";
   }
