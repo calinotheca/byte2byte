@@ -15,11 +15,13 @@
 <link rel="icon" type="image/png" href="../img/favicon.png">
 <!-- CSS-->
 <link href="../css/styles.css" rel="stylesheet" media="all">
+<link href="../css/loaderIndicator/waitMe.css" rel="stylesheet" media="all">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
 <body>
+<div class="table-loader-icon"></div>
   <div class="page-wrapper bg-grey">
     <div class="wrapper">
       <div class="card card-6">
@@ -86,7 +88,9 @@
           </form>
         </div>
         <div class="card-footer">
-          <button id="sendFormButton" class="btn btn--radius-2 btn--blue-2" type="button" th:text="#{page.row.directory.button2}"></button>
+          <button id="sendFormButton" class="btn btn--radius-2 btn--blue-2" type="button" data-toggle="modal" data-target="#myModal" th:text="#{page.row.directory.button2}"></button>
+          
+          
         </div>
       </div>
       <div class="footer-copyright">
@@ -95,9 +99,60 @@
 
     </div>
   </div>
+  
+  <!-- Modal - confirmation -->
+  <div class="modal fade" id="confirmationModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" th:text="#{modal.confirmationModal.title}"></h4>
+        </div>
+        <div class="modal-body">
+          <p th:text="#{modal.confirmationModal.info}"></p>
+        </div>
+        <div class="modal-footer">
+          <button id="btnNo" type="button" class="btn btn-modal btn-modal-no" data-dismiss="modal" th:text="#{modal.confirmationModal.info.no}"></button>
+          <button id="btnYes" type="button" class="btn btn-modal btn-modal-yes" data-dismiss="modal" th:text="#{modal.confirmationModal.info.yes}"></button>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+    <!-- Modal - summary -->
+  <div class="modal fade" id="summaryModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" th:text="#{modal.summaryModal.title}"></h4>
+        </div>
+        <div class="modal-body">
+          <p><span th:text="#{modal.summaryModal.info1}"></span><span th:text="${' ' + fileChangedAmount + ' '}"></span><span th:text="#{modal.summaryModal.info2}"></span></p>
+        </div>
+        <div class="modal-footer">
+                    <button id="btnClose" type="button" class="btn btn-modal btn-modal-yes" data-dismiss="modal" th:text="#{modal.summaryModal.close}"></button>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <script id="lala" th:inline="javascript">
+    /*<![CDATA[*/
+    var indicatorMessage = /*[[#{page.indicatorMessage}]]*/;
+    var fileChangedAmount = /*[[${fileChangedAmount}]]*/;
+    
+  </script>
   <script src="../js/internationalization.js"></script>
     <script src="../js/formService.js"></script>
       <script src="../js/global.js"></script>
+      <script src="../js/loaderIndicator.js"></script>
   
 
 </body>

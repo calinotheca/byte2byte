@@ -18,12 +18,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class B2bByteReplace {
 
-  public void replaceByte(String findPhrase, String replacePhrase, String localDirectoryPath, String filesExtension) throws IOException {
+  public int replaceByte(String findPhrase, String replacePhrase, String localDirectoryPath, String filesExtension) throws IOException {
 
+    int fileChangedAmount = 0;
     Collection files = FileUtils.listFiles(new File(localDirectoryPath), null, true);
-    if (filesExtension==null)
+    if (filesExtension==null || filesExtension=="" ) {
       filesExtension="";
-
+    }
     for (Iterator iterator = files.iterator(); iterator.hasNext();) {
 
       File file = (File) iterator.next();
@@ -41,12 +42,12 @@ public class B2bByteReplace {
       for (int i = 0; i < replaceToByteArrayStrings.length; i++) {
         replaceToByteArray[i] = Byte.parseByte(replaceToByteArrayStrings[i]);
       }
-      System.out.println(filesExtension);
-     findAndReplacePhrase(fileByteArray, findStringByteArray, replaceToByteArray, file.getAbsolutePath(), filesExtension, 0);
+     fileChangedAmount += findAndReplacePhrase(fileByteArray, findStringByteArray, replaceToByteArray, file.getAbsolutePath(), filesExtension, 0);
     }
+    return fileChangedAmount;
   }
 
-  public void findAndReplacePhrase(byte[] fileByteArray, byte[] findStringByteArray, byte[] replaceToByteArray,
+  public int findAndReplacePhrase(byte[] fileByteArray, byte[] findStringByteArray, byte[] replaceToByteArray,
       String directoryPath, String filesExtension, int offset) throws IOException {
 
     int isByteExist = 0;
@@ -78,28 +79,17 @@ public class B2bByteReplace {
     File changedfile = new File(directoryPath);
     String changedFileType = Files.probeContentType(changedfile.toPath());
     String changedFileExtension = changedfile.getName().substring(changedfile.getName().indexOf(".")+1).toLowerCase();
+    int fileChanged = 0;
+
+      if ((filesExtension.equals(changedFileExtension) || filesExtension.isBlank()) && fileToWriteFlag==1)  {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(directoryPath));
+        writer.write(new String(fileByteArray));
+        writer.close();
+        fileToWriteFlag=0;
+        fileChanged=1;
+      }
+    return fileChanged;
     
-    if (changedFileType == null && fileToWriteFlag==1) {
-      if (filesExtension.equals(changedFileExtension) || filesExtension=="")  {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(directoryPath));
-        writer.write(new String(fileByteArray));
-        writer.close();
-        fileToWriteFlag=0;
-      }
-    } else if (changedFileType.startsWith("text") && fileToWriteFlag==1) {
-      if (filesExtension.equals(changedFileExtension) || filesExtension=="")  {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(directoryPath));
-        writer.write(new String(fileByteArray));
-        writer.close();
-        fileToWriteFlag=0;
-      }
-    } else if (fileToWriteFlag==1) {
-      if (filesExtension.equals(changedFileExtension) || filesExtension=="")  {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(directoryPath));
-        writer.write(new String(fileByteArray));
-        writer.close();
-        fileToWriteFlag=0;
-      }
-    }
   }
+  
 }

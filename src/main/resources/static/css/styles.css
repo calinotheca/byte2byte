@@ -473,3 +473,78 @@ textarea {
   text-align:right;
   padding-right: 2em;
 }
+
+/* ===== Modal =====*/
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
+}
+
+.modal-header, .modal-body {
+  padding-bottom: 1em;
+}
+
+.btn-modal  {
+  line-height: 2em;
+  padding: 0 2em;
+}
+
+.btn-modal-no {
+  color: #4272d7;
+  background: none;
+  border: 1px solid #4272d7;
+  float: right;
+}
+
+.btn-modal-yes {
+  float: right;
+    border: 1px solid #4272d7;
+    margin: 0 0.5em;
+  
+}
+
+.btn-modal-no:hover {
+  color: #4272d7;
+  background: #eff2fc;
+  border: 1px solid #4272d7;
+}
+
+.modal-footer {
+  padding-bottom: 2em;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  width: 30%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
